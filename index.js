@@ -4,7 +4,7 @@ const Article = require('./models/article')
 const articleRouter = require('./routes/articles')
 const methodOverride = require('method-override')
 const app = express()
-
+const PORT = process.env.PORT || 5000;
 const url = 'mongodb+srv://dbUser:dbUser123@cluster0.e1tly.mongodb.net/markdownBlog?retryWrites=true&w=majority';
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
@@ -26,6 +26,6 @@ app.get('/', async (req, res) => {
 
 app.use('/articles', articleRouter)
 
-app.listen(5000,()=>{
-  console.log("Listening on 5000")
+app.listen(PORT,()=>{
+  console.log(`Listening on ${PORT}`)
 })
